@@ -7,14 +7,15 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.1.11.RELEASE</version>
-        <relativePath/>
+        <version>1.5.21.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
     <groupId>org.jcut.gmall</groupId>
     <artifactId>gmall-parent</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
+
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -32,7 +33,7 @@
         <jsoup.version>1.11.2</jsoup.version>
         <httpclient.version>4.5.5</httpclient.version>
         <commons-lang3.version>3.7</commons-lang3.version>
-        <mapper-starter.version>2.0.2</mapper-starter.version>
+        <mapper-starter.version>1.2.3</mapper-starter.version>
         <jedis.version>2.9.0</jedis.version>
         <jest.version>5.3.3</jest.version>
         <jna.version>4.5.1</jna.version>
@@ -42,27 +43,23 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <!--阿里的字符串转json包，因为我们分布式框架使用到了dubbo，dubbo是阿里的，所以不用gson-->
                 <groupId>com.alibaba</groupId>
                 <artifactId>fastjson</artifactId>
                 <version>${fastjson.version}</version>
             </dependency>
 
-            <!--分布式服务框架-->
             <dependency>
                 <groupId>com.alibaba</groupId>
                 <artifactId>dubbo</artifactId>
                 <version>${dubbo.version}</version>
             </dependency>
 
-            <!--Zookerper客户端，dubbo的注册中心-->
             <dependency>
                 <groupId>com.101tec</groupId>
                 <artifactId>zkclient</artifactId>
                 <version>${zkclient.version}</version>
             </dependency>
 
-            <!--dubbo和spring整合jar包-->
             <dependency>
                 <groupId>com.gitee.reger</groupId>
                 <artifactId>spring-boot-starter-dubbo</artifactId>
@@ -73,10 +70,9 @@
                 <groupId>org.mybatis.spring.boot</groupId>
                 <artifactId>mybatis-spring-boot-starter</artifactId>
                 <version>${mybatis.version}</version>
-
             </dependency>
 
-            <!--thymeleaf整合包，以下三个都是-->
+
             <dependency>
                 <groupId>net.sourceforge.nekohtml</groupId>
                 <artifactId>nekohtml</artifactId>
@@ -95,15 +91,14 @@
                 <version>${batik-ext.version}</version>
             </dependency>
 
-            <!-- https://mvnrepository.com/artifact/org.jsoup/jsoup  java的html解析器-->
+            <!-- https://mvnrepository.com/artifact/org.jsoup/jsoup -->
             <dependency>
                 <groupId>org.jsoup</groupId>
                 <artifactId>jsoup</artifactId>
                 <version>${jsoup.version}</version>
             </dependency>
 
-            <!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient
-             java代码操作http协议-->
+            <!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient -->
             <dependency>
                 <groupId>org.apache.httpcomponents</groupId>
                 <artifactId>httpclient</artifactId>
@@ -116,14 +111,13 @@
                 <version>${commons-lang3.version}</version>
             </dependency>
 
-            <!--通用mapper-->
+
             <dependency>
                 <groupId>tk.mybatis</groupId>
                 <artifactId>mapper-spring-boot-starter</artifactId>
                 <version>${mapper-starter.version}</version>
             </dependency>
 
-            <!--redis客户端 -->
             <dependency>
                 <groupId>redis.clients</groupId>
                 <artifactId>jedis</artifactId>
@@ -144,7 +138,6 @@
                 <version>${jna.version}</version>
             </dependency>
 
-            <!--操作javaBean的一个工具包-->
             <dependency>
                 <groupId>commons-beanutils</groupId>
                 <artifactId>commons-beanutils</artifactId>
@@ -154,6 +147,9 @@
 
         </dependencies>
     </dependencyManagement>
+
+
+
 
 
 </project>

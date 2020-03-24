@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.jcut.gmall.order.mapper.OrderMapper">
+    <resultMap type="org.jcut.gmall.bean.OmsOrder" id="omsOrderMap">
+        <id property="oid" column="oid"/>
+        <result property="order_status" column="order_status"/>
+        <collection property="omsOrderItems" ofType="org.jcut.gmall.bean.OmsOrderDetail">
+            <id property="id" column="id"/>
+            <result property="pid" column="pid"/>
+            <result property="pdesc" column="pdesc"/>
+            <result property="price" column="price"/>
+            <result property="num" column="num"/>
+            <result property="img" column="img"/>
+        </collection>
+    </resultMap>
+
+    <select id="selectOrderDetailByUser" resultMap="omsOrderMap" parameterType="String">
+        select o.oid,o.order_status,d.id,d.pid,d.pdesc,d.price,d.num from oms_order o left join oms_order_detail d on o.oid=d.oid and o.uid=#{uid}
+    </select>
+
+
+    <resultMap type="org.jcut.gmall.bean.OmsOrder" id="omsOrderByUid">
+        <id property="oid" column="oid"/>
+        <result property="uid" column="uid"/>
+        <result property="sid" column="sid"/>
+        <result property="money" column="money"/>
+        <association property="smsStore" javaType="org.jcut.gmall.bean.SmsStore">
+            <id property="sid" column="sid" />
+            <result property="gid" column="gid"/>
+        </association>
+    </resultMap>
+    <select id="selectByUid" resultMap="omsOrderByUid" parameterType="org.jcut.gmall.bean.OmsOrder">
+        select o.oid,o.uid,o.sid,o.money,s.gid from oms_order o join sms_store s on o.sid=s.sid where uid=#{uid} and order_status=#{order_status}
+    </select>
+
+
+</mapper>
